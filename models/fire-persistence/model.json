@@ -1,0 +1,112 @@
+{
+  "model_name": "WildFyre FIRMS Fire Persistence Random Forest",
+  "model_type": "RandomForestClassifier",
+  "target": "target_persists_24h",
+  "target_description": "Predict whether an already-active approximate 5 km grid cell will contain another qualifying FIRMS active-fire window during the next 24-hour prediction horizon.",
+  "positive_class": 1,
+  "grid_size_km": 5.0,
+  "observation_window_hours": 6,
+  "prediction_horizon_hours": 24,
+  "training_years": [
+    2022,
+    2023
+  ],
+  "test_years": [
+    2024
+  ],
+  "training_samples": 8549,
+  "test_samples": 4467,
+  "features": [
+    "fire_count",
+    "mean_frp",
+    "max_frp",
+    "mean_bright_ti4",
+    "max_bright_ti4",
+    "mean_bright_ti5",
+    "max_bright_ti5",
+    "high_confidence_count",
+    "normal_confidence_count",
+    "day_detection_count",
+    "night_detection_count",
+    "month",
+    "hour_utc"
+  ],
+  "feature_count": 13,
+  "evaluation": {
+    "accuracy": 0.7318110588762032,
+    "precision": 0.6955875061973228,
+    "recall": 0.7060895822848515,
+    "f1": 0.7007992007992008,
+    "roc_auc": 0.7930981825413576
+  },
+  "runtime": {
+    "architecture": "s390x",
+    "python": "3.12.15",
+    "scikit_learn": "1.9.0",
+    "joblib": "1.6.0",
+    "numpy": "2.0.2"
+  },
+  "interpretation_warning": "This model predicts near-term same-cell FIRMS fire-detection persistence. It does not predict wildfire spread direction, fire arrival time, wildlife danger probability, or evacuation need.",
+  "model_version": "wf08-rf-v1",
+  "release_tag": "wf08-rf-v1",
+  "release_url": "https://github.com/benedict-9/wildfyre/releases/tag/wf08-rf-v1",
+  "acceptance": "WF08 accepted by explicit user instruction on 2026-10-18 SGT; LinuxONE inference requirement waived for this milestone.",
+  "linuxone_inference": {
+    "status": "waived_unverified",
+    "scope": "WF08 waived; WF09 closed at user request on 2026-10-18 after local acceptance, without additional remote verification."
+  },
+  "historical_coverage": "Inherited CSVs accepted for this prototype; request-level full-season coverage not independently reconstructed.",
+  "files": [
+    {
+      "name": "fire_persistence_random_forest.joblib",
+      "bytes": 78513666,
+      "sha256": "dd57c7e853dba80154a8161be90e43ba7891c9a9b9a07549adbbbe5ac43a68ee",
+      "download_url": "https://github.com/benedict-9/wildfyre/releases/download/wf08-rf-v1/fire_persistence_random_forest.joblib"
+    },
+    {
+      "name": "firms_california_2022_2024_vegetation_fire.csv",
+      "bytes": 7235988,
+      "sha256": "cc421a8461c832cb0cfbcafd427b72f734b706dbee7ad2db5e0241519a5df926",
+      "download_url": "https://github.com/benedict-9/wildfyre/releases/download/wf08-rf-v1/firms_california_2022_2024_vegetation_fire.csv"
+    },
+    {
+      "name": "fire_persistence_windows_2022_2024.csv",
+      "bytes": 2685629,
+      "sha256": "243cd45b5f66432d3c5afeff39919558b3f924fd096bbdf39c850458d8e05dec",
+      "download_url": "https://github.com/benedict-9/wildfyre/releases/download/wf08-rf-v1/fire_persistence_windows_2022_2024.csv"
+    }
+  ],
+  "serving_artifact": {
+    "format": "wildfyre-rf-v1",
+    "tree_count": 300,
+    "source_sha256": "dd57c7e853dba80154a8161be90e43ba7891c9a9b9a07549adbbbe5ac43a68ee",
+    "bytes": 7742804,
+    "sha256": "cca817222abb5c59a4d7e218a73b22c80d1efb17d3caab9d2f9c84e3f8425a49",
+    "download_url": "https://github.com/benedict-9/wildfyre/releases/download/wf09-rf-portable-v1/forest.json.gz",
+    "self_check": {
+      "features": {
+        "fire_count": 3.0,
+        "mean_frp": 11.756666666666666,
+        "max_frp": 14.75,
+        "mean_bright_ti4": 345.62000000000006,
+        "max_bright_ti4": 357.05,
+        "mean_bright_ti5": 299.07666666666665,
+        "max_bright_ti5": 304.69,
+        "high_confidence_count": 0.0,
+        "normal_confidence_count": 3.0,
+        "day_detection_count": 3.0,
+        "night_detection_count": 0.0,
+        "month": 10.0,
+        "hour_utc": 18.0
+      },
+      "score": 0.4866666666666667
+    },
+    "bundled_file": "forest.json.gz"
+  },
+  "serving_acceptance": {
+    "milestone": "WF09",
+    "status": "accepted_local_user_requested_closeout",
+    "date": "2026-10-18",
+    "remote_linuxone_inference_verified": false
+  }
+}

@@ -1,0 +1,6 @@
+# Local artifact verification stack; not backend serving requirements.
+scikit-learn==1.9.0
+joblib==1.6.0
+numpy==2.0.2
+scipy==1.13.1
+pandas==3.0.6

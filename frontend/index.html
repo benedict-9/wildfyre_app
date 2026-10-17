@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#f2eee5">
+  <title>WildFyre — observation &amp; response map</title>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+  <link rel="stylesheet" href="styles.css">
+  <script defer src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script defer src="config.js"></script>
+  <script defer src="app.js"></script>
+</head>
+<body>
+  <a class="skip-link" href="#workspace">Skip to workspace</a>
+  <div class="dashboard-shell">
+  <header class="site-header">
+    <div class="header-inner">
+      <div class="brand">
+        <span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M13 2c1 5-3 5-1 9 2-1 3-3 3-5 4 4 6 8 4 12-1 3-4 4-7 4s-6-2-7-5c-1-4 1-7 4-10-1 4 0 6 2 6-2-5 2-6 2-11Z"/></svg></span>
+        <div><h1>Wild<span>Fyre</span></h1><p>Wildlife &amp; wildfire decision support</p></div>
+      </div>
+      <p class="header-context">Observation &amp; response</p>
+      <button id="refresh" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M20 7v5h-5M4 17v-5h5"/><path d="M6 7a7 7 0 0 1 11-1l3 3M4 15l3 3a7 7 0 0 0 11-1"/></svg>Refresh data</button>
+    </div>
+  </header>
+  <main id="workspace" tabindex="-1">
+    <div class="workspace-intro">
+      <div><h2>Regional overview</h2><p>Explore detections, review nearby observations, and test response timing.</p></div>
+      <span class="prototype-label">Decision-support prototype</span>
+    </div>
+    <section class="data-banner" aria-label="Data status">
+      <p id="data-status" role="status" aria-live="polite">Loading observations…</p>
+      <p id="provenance">Sources: NASA FIRMS fire detections · GBIF wildlife observations.</p>
+      <p id="coverage"></p><p id="refresh-status" role="status">Automatic refresh every five minutes.</p>
+      <p class="api-address">API <span id="api-address"></span></p>
+    </section>
+    <div class="workspace">
+      <section class="map-panel" aria-label="Detection and observation map">
+        <div class="map-heading">
+          <div class="panel-title"><div><h2>Observation map</h2></div></div>
+          <span class="legend"><span class="fire-key">● Fire detection</span><span class="occurrence-key">○ Wildlife observation</span></span>
+        </div>
+        <p id="map-message" role="status"></p>
+        <div id="map" aria-label="Map of fire detections and wildlife observations"></div>
+        <div class="map-details">
+          <p class="map-note">Observations may be historical. A point does not establish current animal presence or a habitat boundary.</p>
+          <details class="records"><summary>Source records and observation dates</summary><div id="records"></div></details>
+        </div>
+      </section>
+      <aside aria-label="Candidates and timing scenarios">
+        <section id="persistence-panel" class="persistence-panel" aria-labelledby="persistence-heading">
+          <h2 id="persistence-heading">Fire persistence</h2>
+          <p id="persistence-status" role="status">Waiting for model results…</p>
+          <p id="persistence-meta" class="hint"></p><p id="persistence-window" class="hint"></p>
+          <p id="persistence-note" class="hint"></p><div id="persistence-cells"></div>
+        </section><section class="candidates-panel">
+          <div class="panel-title"><div><h2>Proximity candidates <span id="candidate-count"></span></h2></div></div>
+          <p class="hint">Candidates are within 25 km of a fire detection. Proximity score measures distance only. It is not a calibrated probability or a predicted arrival time.</p>
+          <p id="empty-state"></p>
+          <div id="candidates"></div>
+        </section>
+        <section id="scenario" class="scenario-panel" aria-labelledby="scenario-heading">
+          <div class="panel-title"><div><h2 id="scenario-heading">Operator timing scenario</h2></div></div>
+          <p id="selection-message">Select a candidate to enter timing assumptions.</p>
+          <div id="scenario-content" hidden>
+            <div id="baseline-timing"></div>
+            <p class="hint" id="scenario-help">Enter hypothetical durations in minutes. This evaluation is temporary and is not saved.</p>
+            <form id="timing-form" aria-describedby="scenario-help">
+              <div class="timing-fields">
+                <div class="timing-field"><label for="fire-eta">Fire ETA (minutes)</label><input id="fire-eta" name="fire_eta_minutes" type="number" min="0" step="any" required inputmode="decimal"></div>
+                <div class="timing-field"><label for="response-time">Response time (minutes)</label><input id="response-time" name="response_time_minutes" type="number" min="0" step="any" required inputmode="decimal"></div>
+                <div class="timing-field"><label for="safety-buffer">Safety buffer (minutes)</label><input id="safety-buffer" name="safety_buffer_minutes" type="number" min="0" step="any" required inputmode="decimal"></div>
+              </div>
+              <button id="evaluate" type="submit">Evaluate scenario <span aria-hidden="true">↗</span></button>
+            </form>
+            <p id="scenario-message" role="status" aria-live="polite"></p>
+            <div id="scenario-result" aria-live="polite"></div>
+          </div>
+        </section>
+      </aside>
+    </div>
+  </main>
+  <footer><span>Data attribution: <a href="https://firms.modaps.eosdis.nasa.gov/">NASA FIRMS</a> · <a href="https://www.gbif.org/">GBIF</a> · Map © <a href="https://www.openstreetmap.org/copyright">OpenStreetMap contributors</a></span><span>Decision-support prototype; timing assumptions are entered by an operator.</span></footer>
+  </div>
+</body>
+</html>

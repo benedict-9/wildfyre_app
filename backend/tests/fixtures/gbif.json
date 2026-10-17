@@ -1,0 +1,28 @@
+{
+  "_fixture": {
+    "description": "One real GBIF observation, projected to adapter fields. Paging metadata is adapted to a complete one-record offline page; edge cases are test mutations, not real observations.",
+    "retrieved_on": "2026-10-17",
+    "source": "https://api.gbif.org/v1/occurrence/5938026320",
+    "search": "https://api.gbif.org/v1/occurrence/search?hasCoordinate=true&decimalLatitude=32.5,42.1&decimalLongitude=-124.5,-114&limit=1&offset=0",
+    "attribution": "GBIF-mediated record; dataset cf3bdc30-370c-48d3-8fff-b587a39d72d6; licence retained on the occurrence.",
+    "taxonomy_verified_on": "2026-10-18"
+  },
+  "offset": 0,
+  "limit": 100,
+  "endOfRecords": true,
+  "count": 1,
+  "results": [
+    {
+      "key": 5938026320,
+      "species": "Nymphalis californica",
+      "scientificName": "Nymphalis californica (Boisduval, 1852)",
+      "decimalLatitude": 38.114101,
+      "decimalLongitude": -122.600098,
+      "eventDate": "2026-01-07",
+      "datasetKey": "cf3bdc30-370c-48d3-8fff-b587a39d72d6",
+      "license": "http://creativecommons.org/licenses/by-nc/4.0/legalcode",
+      "kingdomKey": 1,
+      "kingdom": "Animalia"
+    }
+  ]
+}

@@ -1,0 +1,68 @@
+{
+  "sample": {
+    "startup_seconds": 2.269749800001591,
+    "risk_http_seconds": 0.004929100003209896,
+    "model_status": {
+      "status": "ready",
+      "reason": null,
+      "model_version": "wf08-rf-v1",
+      "self_check": "passed"
+    },
+    "score": 0.71,
+    "window_start": "2026-10-17T00:00:00Z",
+    "window_end": "2026-10-17T06:00:00Z",
+    "horizon_end": "2026-10-18T06:00:00Z",
+    "mode": "sample",
+    "quality_flags": [
+      "synthetic_sample_inputs"
+    ],
+    "browser_passed": true
+  },
+  "mocked_live": {
+    "startup_seconds": 2.2635042000001704,
+    "risk_http_seconds": 0.006791099996917183,
+    "model_status": {
+      "status": "ready",
+      "reason": null,
+      "model_version": "wf08-rf-v1",
+      "self_check": "passed"
+    },
+    "score": 0.67,
+    "window_start": "2026-10-17T12:00:00Z",
+    "window_end": "2026-10-17T18:00:00Z",
+    "horizon_end": "2026-10-18T18:00:00Z",
+    "mode": "live",
+    "quality_flags": [
+      "nrt_transfer_unvalidated",
+      "vegetation_type_unavailable"
+    ],
+    "updated_input_score": 0.5933333333333334,
+    "current_inputs_change_prediction": true
+  },
+  "memory_measurement": "Not recorded: launcher working set is not a reliable Python-worker measurement.",
+  "platform": "Windows AMD64 / Python3.12.14",
+  "live_provider_verified": false,
+  "linuxone_verified": false,
+  "final_documentation_rehearsal": {
+    "checked_at_utc": "2026-10-17T21:34:55.413287+00:00",
+    "mode": "sample",
+    "entry_point": "python -m app.startup --sample",
+    "startup_seconds": 1.9274870000008377,
+    "self_check": "passed",
+    "sample_model_score": 0.71,
+    "scenario_window_minutes": 35,
+    "scenario_priority": "HIGH",
+    "browser_widths": [
+      320,
+      390,
+      680,
+      768,
+      900,
+      1024,
+      1280,
+      1440
+    ],
+    "browser_passed": true,
+    "remote_linuxone_inference_verified": false
+  }
+}

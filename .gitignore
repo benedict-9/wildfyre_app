@@ -1,0 +1,17 @@
+.venv/
+__pycache__/
+*.pyc
+.env
+*.pem
+*.ppk
+node_modules/
+.ipynb_checkpoints/
+# Keep local ML environments, raw data and unreviewed model outputs out of Git.
+.venv-ml/
+notebooks/data/
+notebooks/models/
+notebooks/wf07-corrected/
+*.joblib
+
+# Downloaded release assets are local verification/inference inputs.
+artifacts/

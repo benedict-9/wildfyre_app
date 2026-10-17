@@ -1,0 +1,36 @@
+{
+  "runtime": {
+    "architecture": "AMD64",
+    "python": "3.12.14",
+    "sklearn": "1.9.0",
+    "numpy": "2.0.2",
+    "pandas": "3.0.6",
+    "scipy": "1.13.1",
+    "joblib": "1.6.0"
+  },
+  "model_sha256": "dd57c7e853dba80154a8161be90e43ba7891c9a9b9a07549adbbbe5ac43a68ee",
+  "train_samples": 8549,
+  "test_samples": 4467,
+  "metrics": {
+    "accuracy": 0.7318110588762032,
+    "balanced_accuracy": 0.7292544685617806,
+    "precision": 0.6955875061973228,
+    "recall": 0.7060895822848515,
+    "f1": 0.7007992007992008,
+    "roc_auc": 0.7930981825413576
+  },
+  "confusion_matrix": [
+    [
+      1866,
+      614
+    ],
+    [
+      584,
+      1403
+    ]
+  ],
+  "majority_baseline_accuracy": 0.5551824490709648,
+  "feature_order_verified": true,
+  "reload_predictions_and_probabilities_match": true,
+  "remote_linuxone_inference_verified": false
+}
